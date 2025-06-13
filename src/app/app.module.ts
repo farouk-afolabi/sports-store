@@ -5,10 +5,11 @@ import { StoreModule } from "./store/store.module";
 import { StoreComponent } from "./store/store.component";
 import { CheckoutComponent } from "./store/checkout.component";
 import { CartDetailComponent } from "./store/cartDetail.component";
-import { RouterModule } from "@angular/router";
+import { RouterModule, Routes } from "@angular/router";
 import { StoreFirstGuard } from "./storeFirst.guard";
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 @NgModule({
     imports: [BrowserModule, StoreModule,
@@ -34,7 +35,7 @@ import { environment } from '../environments/environment';
             { path: "**", redirectTo: "/store" }
         ]),
         ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })],
-    providers: [StoreFirstGuard],
+    providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }, StoreFirstGuard],
     declarations: [AppComponent],
     bootstrap: [AppComponent]
 })
