@@ -1,14 +1,24 @@
-
-
+# Use a lightweight Node.js image
 FROM node:18-alpine
-RUN mkdir -p /usr/src/sportsstore
-COPY dist/SportsStore /usr/src/sportsstore/dist/SportsStore
-COPY ssl /usr/src/sportsstore/ssl
-COPY authMiddleware.js /usr/src/sportsstore/
-COPY serverdata.json /usr/src/sportsstore/
-COPY server.js /usr/src/sportsstore/server.js
-COPY deploy-package.json /usr/src/sportsstore/package.json
+
+# Create working directory
 WORKDIR /usr/src/sportsstore
+
+# Copy backend files
+COPY backend/package.json ./package.json
+COPY backend/server.js ./
+COPY backend/authMiddleware.js ./
+COPY backend/serverdata.json ./
+COPY backend/ssl ./ssl
+
+# Optional: Copy frontend build output (if serving frontend from backend)
+COPY frontend/dist ./dist
+
+# Install backend dependencies
 RUN npm install
-EXPOSE 80
+
+# Expose port
+EXPOSE 5000
+
+# Start the server
 CMD ["node", "server.js"]
