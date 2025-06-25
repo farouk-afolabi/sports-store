@@ -6,6 +6,9 @@ import { Cart } from "./cart.model";
 import { Order } from "./order.model";
 import { map } from "rxjs/operators";
 import { HttpHeaders } from '@angular/common/http';
+import { environment } from '../../environments/environment';
+
+
 
 const PROTOCOL = "http";
 const PORT = 3500;
@@ -16,7 +19,7 @@ export class RestDataSource {
     auth_token: string;
 
     constructor(private http: HttpClient) {
-        this.baseUrl = `${PROTOCOL}://${location.hostname}:${PORT}/`;
+        this.baseUrl = `${environment.apiUrl}/`;
 // this.baseUrl = "/api/"
     }
 
