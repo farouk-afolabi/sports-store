@@ -5,7 +5,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://sports-store-m8wv.onrender.com'
+  apiUrl: 'https://sports-store-m8wv.onrender.com/api'
 };
 
 
