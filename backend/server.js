@@ -20,7 +20,7 @@ app.use(auth);
 // API Routes
 app.use("/api", router);
 
-// Use Render-assigned port
+// Using Render-assigned port
 const PORT = process.env.PORT || 3500;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
