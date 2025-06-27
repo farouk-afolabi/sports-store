@@ -9,7 +9,7 @@ const router = jsonServer.router("serverdata.json");
 
 // Allow your frontend domain (GitHub Pages)
 app.use(cors({
-  origin: "https://farouk-afolabi.github.io", // <-- yo
+  origin: "https://farouk-afolabi.github.io/sports-store/", 
   credentials: true
 }));
 
