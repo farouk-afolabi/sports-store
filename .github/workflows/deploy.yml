@@ -32,4 +32,4 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: frontend/dist/sports-store 
+          folder: frontend/dist/SportsStore 
