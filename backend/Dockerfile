@@ -3,11 +3,12 @@ FROM node:18-alpine
 
 WORKDIR /usr/src/sportsstore
 
-COPY backend/package.json ./package.json
-COPY backend/server.js ./
-COPY backend/authMiddleware.js ./
-COPY backend/serverdata.json ./
-COPY backend/ssl ./ssl
+COPY package.json ./package.json
+COPY server.js ./
+COPY authMiddleware.js ./
+COPY serverdata.json ./
+COPY ssl ./ssl
+
 
 RUN npm install
 
