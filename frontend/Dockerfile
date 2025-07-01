@@ -8,6 +8,9 @@ RUN npm install
 
 COPY . .
 
+# Fix for OpenSSL issue in Node 17+
+ENV NODE_OPTIONS=--openssl-legacy-provider
+
 RUN npm run build
 
 
