@@ -9,7 +9,12 @@ const router = jsonServer.router("serverdata.json");
 
 // Allow your frontend domain (GitHub Pages)
 app.use(cors({
-  origin: "https://farouk-afolabi.github.io", 
+  origin: [
+"https://farouk-afolabi.github.io" , // Live site 
+'http://localhost:4200', //  Angular dev server
+'http://localhost:80'  // Docker Frontend
+
+  ],  
   credentials: true
 }));
 
