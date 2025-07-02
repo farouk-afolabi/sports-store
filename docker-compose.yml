@@ -1,3 +1,4 @@
+version: '3.8'
 services:
   backend:
     build:
@@ -6,6 +7,8 @@ services:
     ports:
       - "3000:3000"
     restart: unless-stopped
+    networks:
+      - sportsstore-network
 
   frontend:
     build:
@@ -14,3 +17,11 @@ services:
     ports:
       - "8080:80"
     restart: unless-stopped
+    depends_on:
+      - backend  # Ensures backend starts first
+    networks:
+      - sportsstore-network
+
+networks:
+  sportsstore-network:
+    driver: bridge
