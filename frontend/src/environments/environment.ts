@@ -5,7 +5,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:3000/api', // Docker backend
+  apiUrl: 'http://backend:3000/api', // Docker backend
 };
 
 /*
