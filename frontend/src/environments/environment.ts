@@ -5,9 +5,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://sports-store-m8wv.onrender.com/api'
+  apiUrl: 'http://localhost:3000/api', // Docker backend
 };
-
 
 /*
  * For easier debugging in development mode, you can import the following file
