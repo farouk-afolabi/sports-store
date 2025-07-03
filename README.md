@@ -96,7 +96,7 @@ sports-store/
 | Command | Description |
 | --- | --- |
 | `ng serve` | Start Angular dev server |
-| `npm run json` | Start backend API (port 3500) |
+| `npm run json` | Start backend API (port 3000) |
 | `ng build --prod` | Production build |
 | `ng test` | Run unit tests |
 | `ng e2e` | Run end-to-end tests |
