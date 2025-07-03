@@ -1,13 +1,21 @@
+
+require('dotenv').config();
+
+
+const APP_SECRET = process.env.APP_SECRET;
+const USERNAME = process.env.ADMIN_USERNAME;
+const PASSWORD = process.env.ADMIN_PASSWORD;
+
+//  validation 
+if (!APP_SECRET || !USERNAME || !PASSWORD) {
+  throw new Error("Missing required environment variables for authentication");
+}
+
 const jwt = require("jsonwebtoken");
-
-const APP_SECRET = "myappsecret";
-const USERNAME = "admin";
-const PASSWORD = "secret";
-
 const mappings = {
     get: ["/api/orders", "/orders"],
     post: ["/api/products", "/products", "/api/categories", "/categories"]
-};
+}
 
 function requiresAuth(method, url) {
     return (mappings[method.toLowerCase()] || [])
@@ -15,9 +23,9 @@ function requiresAuth(method, url) {
 }
 
 module.exports = function (req, res, next) {
-    if (req.url.endsWith("/login") && req.method === "POST") {
-        if (req.body && req.body.name === USERNAME && req.body.password === PASSWORD) {
-            const token = jwt.sign({ data: USERNAME }, APP_SECRET, { expiresIn: "1h" });
+    if (req.url.endsWith("/login") && req.method == "POST") {
+        if (req.body && req.body.name == USERNAME && req.body.password == PASSWORD) {
+            let token = jwt.sign({ data: USERNAME }, APP_SECRET, { expiresIn: "1h" });
             res.json({ success: true, token: token });
         } else {
             res.json({ success: false });
@@ -32,13 +40,11 @@ module.exports = function (req, res, next) {
                 jwt.verify(token, APP_SECRET);
                 next();
                 return;
-            } catch (err) {
-                console.error("JWT verification failed:", err);
-            }
+            } catch (err) { }
         }
         res.statusCode = 401;
         res.end();
         return;
     }
     next();
-};
+}
