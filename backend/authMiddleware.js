@@ -2,14 +2,13 @@
 require('dotenv').config();
 
 
-const APP_SECRET = process.env.APP_SECRET;
+const APP_SECRET = process.env.APP_SECRET ;
 const USERNAME = process.env.ADMIN_USERNAME;
 const PASSWORD = process.env.ADMIN_PASSWORD;
 
 //  validation 
-if (!APP_SECRET || !USERNAME || !PASSWORD) {
-  throw new Error("Missing required environment variables for authentication");
-}
+if (!APP_SECRET) throw new Error("JWT secret not configured");
+if (!USERNAME || !PASSWORD) throw new Error("Admin credentials not set");
 
 const jwt = require("jsonwebtoken");
 const mappings = {
