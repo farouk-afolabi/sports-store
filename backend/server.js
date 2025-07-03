@@ -1,3 +1,14 @@
+
+require('dotenv').config();
+
+const requiredEnvVars = ['APP_SECRET', 'ADMIN_USERNAME', 'ADMIN_PASSWORD'];
+requiredEnvVars.forEach(varName => {
+  if (!process.env[varName]) {
+    console.error(`Missing required environment variable: ${varName}`);
+    process.exit(1);
+  }
+});
+
 const express = require("express");
 const jsonServer = require("json-server");
 const bodyParser = require("body-parser");

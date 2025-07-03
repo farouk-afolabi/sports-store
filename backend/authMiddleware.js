@@ -1,16 +1,11 @@
-
-require('dotenv').config();
-
-
-const APP_SECRET = process.env.APP_SECRET ;
-const USERNAME = process.env.ADMIN_USERNAME;
-const PASSWORD = process.env.ADMIN_PASSWORD;
-
-//  validation 
-if (!APP_SECRET) throw new Error("JWT secret not configured");
-if (!USERNAME || !PASSWORD) throw new Error("Admin credentials not set");
-
 const jwt = require("jsonwebtoken");
+
+
+const { APP_SECRET, ADMIN_USERNAME: USERNAME, ADMIN_PASSWORD: PASSWORD } = process.env;
+
+
+
+
 const mappings = {
     get: ["/api/orders", "/orders"],
     post: ["/api/products", "/products", "/api/categories", "/categories"]
